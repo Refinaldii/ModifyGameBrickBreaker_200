@@ -20,7 +20,7 @@ class Ball(GameObject):
     def __init__(self, canvas, x, y):
         self.radius = 10
         self.direction = [1, -1]
-        self.speed = 100
+        self.speed = 10
         item = canvas.create_oval(x - self.radius, y - self.radius,
                                   x + self.radius, y + self.radius,
                                   fill='white')
@@ -66,7 +66,7 @@ class Paddle(GameObject):
                                        y - self.height / 2,
                                        x + self.width / 2,
                                        y + self.height / 2,
-                                       fill='#FFB643')
+                                       fill='#1E90FF')
         super(Paddle, self).__init__(canvas, item)
 
     def set_ball(self, ball):
@@ -109,10 +109,10 @@ class Game(tk.Frame):
     def __init__(self, master):
         super(Game, self).__init__(master)
         self.lives = 3  
-        self.width = 610
-        self.height = 400
+        self.width = 600
+        self.height = 500
         self.game_active = False
-        self.canvas = tk.Canvas(self, bg='#D6D1F5',
+        self.canvas = tk.Canvas(self, bg='#C0C0C0',
                                 width=self.width,
                                 height=self.height)
         self.canvas.pack()
@@ -153,7 +153,7 @@ class Game(tk.Frame):
         brick = Brick(self.canvas, x, y, hits)
         self.items[brick.item] = brick
 
-    def draw_text(self, x, y, text, size='40'):
+    def draw_text(self, x, y, text, size='20'):
         font = ('Forte', size)
         return self.canvas.create_text(x, y, text=text, font=font)
 
@@ -211,6 +211,6 @@ class Game(tk.Frame):
 
 if __name__ == '__main__':
     root = tk.Tk()
-    root.title('Break those Bricks!')
+    root.title('Hancurkan Bata Batanya')
     game = Game(root)
     game.mainloop()
